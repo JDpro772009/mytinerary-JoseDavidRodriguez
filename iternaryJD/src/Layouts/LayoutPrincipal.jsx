@@ -89,8 +89,8 @@ function LayoutPrincipal() {
       </li>
 
       
-
-      <li className="nav-item" id="themeButton">
+      {/* No logre que funcionara el cambio de tema */}
+            <li className="nav-item" id="themeButton">
         <a href="#" className="nav-link">
           <svg
             className="theme-icon"
