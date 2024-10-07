@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 function Main() {
     const ciudades1 = [
@@ -82,13 +82,21 @@ function Main() {
                 }
             };
 
-            setAnimacionEnCurso(true); 
+            setAnimacionEnCurso(true);
             requestAnimationFrame(animcaionScroll);
         }
     };
 
     const atras = () => desplazar('atras');
     const adelante = () => desplazar('adelante');
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            adelante(); 
+        }, 5000);
+
+        return () => clearInterval(interval); 
+    }, []);
 
     return (
         <>
