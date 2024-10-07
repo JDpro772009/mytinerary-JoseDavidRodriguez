@@ -1,0 +1,632 @@
+:root {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+    --transition-speed: 600ms;
+    --bg-header:rgb(30, 59, 105);
+  }
+ 
+  body {
+    color: black;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body::-webkit-scrollbar {
+    width: 0.25rem;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #1e1e24;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: #6649b8;
+  }
+  header{
+    margin-left: 5rem;
+    position: relative;
+    color: white;
+    
+  }
+  .boton-redirect{
+    margin-left: 2rem;
+  }
+  .caja-header-flex{
+    
+    display: flex;
+    padding: 1rem;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    min-height: 30rem;
+    align-content: center;
+   } 
+   .sub-caja-header2{
+   
+    position: relative;
+    display: flex;
+    width: 28rem;
+    height: 15rem;
+  
+ 
+   }
+   .img-avion1,.img-avion2{
+    
+    width: 400px;
+    object-fit: cover;
+    position: absolute;
+   }
+   .icono-sign-in{
+     max-width: 5rem;
+     max-height: 5rem;
+    
+   }
+   .iniciar-sesion a{
+    
+    height: 25px;
+    margin-top: 1rem;
+    text-decoration: underline;
+   }
+   .iniciar-sesion{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 4rem;
+    
+    position: absolute;
+    right: 3rem;
+    z-index: 10;
+   }
+   .img-avion1{
+    left: 0;
+    top: -5rem;
+    z-index: -2;
+   }
+   .img-avion2{
+    transform: rotate(-90deg);
+     bottom: -5rem;
+     right: 10rem;
+
+   }
+  
+   .sub-caja-header1{
+   
+    position: relative;
+    max-width: 37rem;
+    display: flex;
+    flex-flow: column wrap;
+    gap: 2rem;
+    justify-content: center;
+
+   }
+   .sub-caja-header1 p{
+    font-size: 20px;
+   }
+ 
+  .imagenes-header{
+    width: 11rem;
+    height: 14rem;
+    border-radius: 20px;
+    position: absolute;
+    object-fit: cover;
+    border: 1px solid white;
+    animation: move-image 3s infinite;
+    
+  }
+  @keyframes move-image{
+      0%{
+        top: 1rem;
+      }
+      16%{
+        top: 1.2rem;
+      }
+      32%{
+        top: 1.3rem;
+      }
+      48%{
+        top: 1.4rem;
+      }
+      64%{
+        top: 1.3rem;
+      }
+      80%{
+        top: 1.1rem;
+      }
+      96%{
+        top: 0.8rem;
+      }
+      100%{
+        top: 1rem;
+      }
+  } 
+  .imagen1{
+    
+    transform: rotate(-10deg);
+    
+  }
+  .imagen2{
+   right: 12rem;
+    transform: translateY(-15px);
+  }
+  .imagen3{
+    right: 4rem;
+    transform: rotate(15deg);
+  }
+ 
+  .titu{
+   
+    text-shadow: 10px 10px 20px #000000;
+ 
+  }
+  .fotoHeader{
+    position: absolute;
+    height: 90vh;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(.7);
+    z-index: -100;
+  }
+  
+  
+  .navbar {
+    position: fixed;
+    background-color: var(--bg-primary);
+    transition: width 600ms ease;
+    overflow: hidden;
+    z-index: 1000;
+  }
+  
+  .navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .nav-item {
+    width: 100%;
+  }
+  
+  .nav-item:last-child {
+    margin-top: auto;
+  }
+  
+  .nav-link {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    filter: grayscale(100%) opacity(0.7);
+    transition: var(--transition-speed);
+  }
+  
+  .nav-link:hover {
+    filter: grayscale(0%) opacity(1);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+  }
+  
+  .link-text {
+    display: none;
+    margin-left: 1rem;
+    font-size: 1rem;
+  }
+  
+  .nav-link svg {
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 1.5rem;
+  }
+  
+  .fa-primary {
+    color: #327cdc;
+  }
+  
+  .fa-secondary {
+    color: #1659af;
+  }
+  
+  .fa-primary,.fa-secondary {
+    transition: var(--transition-speed);
+  }
+  
+  .logo {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    font-size: 1.5rem;
+    letter-spacing: 0.3ch;
+    width: 100%;
+  }
+  
+  .logo svg {
+    transform: rotate(0deg);
+    transition: var(--transition-speed);
+  }
+  
+  .logo-text
+  {
+    display: inline;
+    position: absolute;
+    left: -999px;
+    transition: var(--transition-speed);
+  }
+  
+  .navbar:hover .logo svg {
+    transform: rotate(-180deg);
+  }
+
+  
+  .dark {
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+  }
+  
+  .light {
+    --text-primary: #1f1f1f;
+    --text-secondary: #000000;
+    --bg-primary: #ffffff;
+    --bg-secondary: #e4e4e4;
+  }
+  
+  .solar {
+    --text-primary: #576e75;
+    --text-secondary: #35535c;
+    --bg-primary: #fdf6e3;
+    --bg-secondary: #f5e5b8;
+  }
+  
+  .theme-icon {
+    display: none;
+  }
+  
+  .dark #darkIcon {
+    display: block;
+  }
+  
+  .light #lightIcon {
+    display: block;
+  }
+  
+  .solar #solarIcon {
+    display: block;
+  }
+
+  main{
+    margin-left: 5rem;
+    padding: 2rem;
+    background-color: #1b1b23;
+    color: white;     
+  }
+  .titulo-carrusel{
+    border-top: 1px solid white;
+    display: flex;
+    align-content: center;
+   
+  }
+  .titulo-carrusel img{
+    width: 80px;
+  }
+  .carrusel-info{
+    background-color: #171724;
+    position: relative;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    
+  }
+  .info-iternarys{
+    width: 400px; 
+
+    padding: 2rem;
+    display: flex;
+    align-items:  center;
+
+  }
+  .carrusel{
+    display: flex;
+    flex-wrap: nowrap;
+    border-right: 2px solid white;
+    padding: 1rem;
+    width: 45rem;
+    gap: 1rem;
+    overflow-x:hidden;
+    position: relative;
+    transition: scroll-left .5s;
+  }
+
+  .carrusel>div{
+   
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-width: 42.7rem;
+   
+    
+  }
+  .carrusel img{
+    width: 20rem;
+    height: 13rem;
+    border-radius: 1rem;
+    object-fit: cover;
+    
+  }
+  .slides{
+    position: absolute;
+
+    padding: 1rem;
+    border-radius: 2rem;
+    line-height: 1rem;
+    top: 45%;
+    z-index: 11;
+    background-color: #14141840;
+    border-top: 1px solid var(--bg-header);
+    border-bottom: 1px solid var(--bg-header);
+    backdrop-filter: blur(3px);
+  }
+  .slide-izq{
+    left: .4rem;
+  }
+  .slide-der{
+    left: 42rem;
+  }
+  .carrusel>div div{
+   
+    position: relative;
+  }
+  .carrusel>div div>p{
+    
+    padding: 5px;
+    border-radius: 1rem;
+    background-color: #1659af;
+    position: absolute;
+    font-size: 13px;
+    right: 10px;
+    top: 10px;
+  }
+
+footer{
+  margin-left: 5rem;
+    padding: 1.5rem;
+    background-color: #171724;
+    color: white;  
+}
+.contenedor-redes{
+  display: flex;
+
+  gap: 10px;
+}
+.contenedor-redes img{
+  width: 3rem;
+}
+.contenedor-contactos{
+  flex-wrap: wrap;
+  display: flex;
+  gap: 1rem;
+}
+.sub-contactos li{
+  margin: 10px;
+}
+.links-contactos:hover{
+  color: #1659af;
+}
+.sub-contacto-parraf{
+  width: 400px;
+  border-left: 2px solid white;
+  padding: 1rem;
+}
+#buscar-ciudades{
+  border-radius: .3rem;
+  padding: .3rem;
+  background-color: var(--bg-primary);
+  transition: all .3s;
+}
+#buscar-ciudades:focus{
+  outline: #1659af 1px solid;
+}
+.ciudades{
+  background-color: var(--bg-secondary);
+  padding: 1rem;
+  width: 100%;
+  margin: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.cartas-ciudades img{
+  width: 20rem;
+  object-fit: cover;
+  height: 13rem;
+  border-radius: 1rem;
+  border: 1px solid white;
+}
+.cartas-ciudades p{
+  
+  padding: 5px;
+  border-radius: 1rem;
+  background-color: #1659af;
+  position: absolute;
+  font-size: 13px;
+  right: 10px;
+  top: 10px;
+}
+@media only screen and (max-width: 600px) {
+  .carrusel img{
+    width: 7rem;
+    height: 7rem;
+    
+  }
+  .carrusel{
+    gap: 5px;
+  }
+  .carrusel>div{
+    min-width: 15.1rem;
+  
+  }
+  .slides{
+    top: 20%;
+  }
+  .slide-der{
+    left: 15rem;
+  }
+  .caja1-carrusel-m{
+    margin-right: 384px;
+  }
+  .caja2-carrusel-m{
+    margin-right: 384px;
+    margin-left: 64px;
+  }
+  .caja3-carrusel-m{
+    margin-left: 64px;
+  }
+  .contenedor-contactos{
+    margin-bottom: 7rem;
+  }
+  .navbar {
+    bottom: 0;
+    width: 100vw;
+    height: 5rem;
+    overflow-x:scroll ;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+  }
+
+  .nav-link {
+    justify-content: center;
+  }
+
+  
+  header{
+    margin-left: 0;
+    
+  }
+  .iniciar-sesion{
+    height: 3rem;
+    right: 1rem;
+  }
+  .iniciar-sesion a{
+    font-size: 12px;
+  }
+  .imagenes-header{
+    width: 7rem;
+    height: 8rem;
+  }
+  .imagen1{
+    left: 1rem;
+    transform: rotate(-10deg);
+    
+  }
+  .imagen2{
+   right: 5.5rem;
+    transform: translateY(-15px);
+  }
+  .imagen3{
+    right: 1rem;
+    transform: rotate(15deg);
+  }
+  .sub-caja-header2{
+    height: 9rem;
+    margin: 5px;
+  }
+  .fotoHeader{
+    height: 120vh;
+  }
+  .boton-redirect{
+   
+    margin: 10px;
+  }
+  main{
+    margin: 0;
+  }
+  footer{
+    margin: 0;
+  }
+}
+
+
+@media only screen and (min-width: 600px) {
+  .navbar {
+    top: 0;
+    width: 5rem;
+    height: 111vh;
+   
+
+  }
+ .slides{
+  top: 28%;
+ }
+ .slide-izq{
+  left: -1rem;
+}
+.slide-der{
+  left: 40rem;
+}
+  header{
+    width: 100vw;
+  }
+  main{
+    width: 100vw;
+  }
+  footer{
+    width: 100vw;
+  }
+  .navbar:hover {
+    width: 16rem;
+  }
+
+  .navbar:hover .link-text {
+    display: inline;
+  }
+
+  .navbar:hover .logo svg
+  {
+    margin-left: 11rem;
+  }
+
+  .navbar:hover .logo-text
+  {
+    left: 0px;
+  }
+}
+@media only screen and (min-width:1023px){
+  
+  header{
+    width:auto;
+  }
+  main{
+    width:auto;
+  }
+  footer{
+    width:auto;
+  }
+  .slides{
+    top: 45%;
+   }
+   .navbar {
+   
+    height: 100vh;
+   
+
+  }
+}
