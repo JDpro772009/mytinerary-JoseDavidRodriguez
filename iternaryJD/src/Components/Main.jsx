@@ -69,21 +69,21 @@ function Main() {
             const duracion = 500;
             let comienzaTiempo;
 
-            const animcaionScroll = (ctime) => {
+            const animacionScroll = (ctime) => {
                 if (!comienzaTiempo) comienzaTiempo = ctime;
                 const timeElapsed = ctime - comienzaTiempo;
                 const progress = Math.min(timeElapsed / duracion, 1);
                 divRef.current.scrollLeft = inicia + (termina - inicia) * progress;
 
                 if (progress < 1) {
-                    requestAnimationFrame(animcaionScroll);
+                    requestAnimationFrame(animacionScroll);
                 } else {
                     setAnimacionEnCurso(false);
                 }
             };
 
             setAnimacionEnCurso(true);
-            requestAnimationFrame(animcaionScroll);
+            requestAnimationFrame(animacionScroll);
         }
     };
 
@@ -91,8 +91,17 @@ function Main() {
     const adelante = () => desplazar('adelante');
 
     useEffect(() => {
+        
         const interval = setInterval(() => {
-            adelante(); 
+            if(divRef.current.scrollLeft>=1390){
+
+               divRef.current.scrollLeft = 0
+            }else{
+                adelante(); 
+                console.log(divRef.current.scrollLeft);
+                
+            }
+            
         }, 5000);
 
         return () => clearInterval(interval); 
