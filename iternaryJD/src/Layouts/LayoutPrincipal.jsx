@@ -145,8 +145,7 @@ function LayoutPrincipal() {
                     </ul>
                 </div>
                 <div className="sub-contacto-parraf">
-                    <p><span className="font-bold ">Countries present: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis perferterminais dolore
-                    fugit dolorum illum tempora. Esse architecto ab hi.</p>
+                <p><span className="font-bold ">Countries present: <br /> </span>United State, Australia, Francia, Brazil</p>
                       
                 </div>
             </div>
