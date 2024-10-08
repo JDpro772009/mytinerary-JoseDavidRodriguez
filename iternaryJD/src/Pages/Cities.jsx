@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import { SignUp } from "../Components/SignUp"
 const ciudades = [{
   nombre:"Chicago",
   image:"https://images.pexels.com/photos/1823680/pexels-photo-1823680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -54,11 +54,7 @@ function Cities() {
 <div className="caja-header-flex">
 <img src="./src/Resources/Estrellas.png" alt="" className="absolute -top-20 w-60 right-60"/>
 <img src="./src/Resources/avion-removebg-preview.png" alt="" className="img-avion1"/>
-<div className="iniciar-sesion">
-
-    <img src="./src/Resources/sigin-removebg-preview.png" alt="" className="icono-sign-in"/>
-    <a href="youtube.com" >Sign In</a>
-</div>
+<SignUp></SignUp>
 <div className="sub-caja-header1">
 <h1 className="text-5xl font-bold titu text-center">Explore your next city</h1>
 <p className="text-center">"Cities are the pulse of life, where every street tells a story and every corner holds a dream."</p>

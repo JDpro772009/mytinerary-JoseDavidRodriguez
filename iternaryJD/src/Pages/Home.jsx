@@ -2,7 +2,7 @@
 import { Main } from '../Components/Main'
 import { Button } from "@material-tailwind/react";
 
-
+import { SignUp } from "../Components/SignUp"
 
 
 function Home() {
@@ -15,11 +15,7 @@ function Home() {
 
             <div className="caja-header-flex">
             <img src="./src/Resources/avion-removebg-preview.png" alt="" className="img-avion1"/>
-            <div className="iniciar-sesion">
-            
-                <img src="./src/Resources/sigin-removebg-preview.png" alt="" className="icono-sign-in"/>
-                <a href="youtube.com" >Sign In</a>
-            </div>
+            <SignUp></SignUp>
             <div className="sub-caja-header1">
             <h1 className="text-5xl font-bold titu">My Tinerary</h1>
             <p>Find your <span className='text-cyan-600'>perfect</span> trip, designed by insiders who know and love their <span className='text-cyan-600'>cities!</span><br />Explore your next city on the<span className='text-cyan-600'> button</span></p>
