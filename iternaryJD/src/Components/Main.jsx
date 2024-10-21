@@ -1,62 +1,45 @@
 import React, { useRef, useState, useEffect } from 'react';
 
 function Main() {
-    const ciudades1 = [
-        {
-            nombre: "Chicago",
-            image: "https://images.pexels.com/photos/1823680/pexels-photo-1823680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        },
-        {
-            nombre: "Tokyo",
-            image: "https://images.pexels.com/photos/2339009/pexels-photo-2339009.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        },
-        {
-            nombre: "New York",
-            image: "https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        },
-        {
-            nombre: "San Francisco",
-            image: "https://images.pexels.com/photos/196642/pexels-photo-196642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        }
-    ];
+    
+  let [ciudades,setCiudades] = useState([])
+  useEffect(()=>{
+    fetch("http://localhost:2020/api/cities/all")
+    .then((val) => val.json())
+      .then((data) => {
+      
+        
+        setCiudades(data.response||[])
+        console.log(data);
+        
+      });
+  },[])
+  let iterar = {
+ ciudades1 : [],
+ ciudades2 : [],
+ ciudades3 : [],
+ ciudades4 : []}
 
-    const ciudades2 = [
-        {
-            nombre: "Seattle",
-            image: "https://images.pexels.com/photos/2539395/pexels-photo-2539395.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        },
-        {
-            nombre: "Paris",
-            image: "https://images.pexels.com/photos/1308940/pexels-photo-1308940.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        },
-        {
-            nombre: "Estambul",
-            image: "https://images.pexels.com/photos/23227975/pexels-photo-23227975/free-photo-of-ciudad-punto-de-referencia-noche-oscuro.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        },
-        {
-            nombre: "Barcelona",
-            image: "https://images.pexels.com/photos/1388030/pexels-photo-1388030.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        }
-    ];
+console.log(iterar.lenght);
 
-    const ciudades3 = [
-        {
-            nombre: "Queenstown",
-            image: "https://images.pexels.com/photos/18439533/pexels-photo-18439533/free-photo-of-vista-aerea-de-casas-y-montanas-cubiertas-de-nieve.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        },
-        {
-            nombre: "Palermo",
-            image: "https://images.pexels.com/photos/13849371/pexels-photo-13849371.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        },
-        {
-            nombre: "Rio de Janeiro",
-            image: "https://images.pexels.com/photos/28235675/pexels-photo-28235675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        },
-        {
-            nombre: "Sidney",
-            image: "https://images.pexels.com/photos/995764/pexels-photo-995764.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        }
-    ];
+ let numero = 1
+ console.log(ciudades);
+ 
+ciudades.map(c=>{
+   if(iterar.ciudades1.length < 4){
+    iterar.ciudades1.push(c)
+    
+   }else if(iterar.ciudades2.length < 4){
+    iterar.ciudades2.push(c)
+   }else if(iterar.ciudades3.length < 4){
+    iterar.ciudades3.push(c)
+   }else{
+    iterar.ciudades4.push(c)
+   }
+   console.log(iterar);
+})
+   
+   
 
     const divRef = useRef(null);
     const [animacionEnCurso, setAnimacionEnCurso] = useState(false);
@@ -93,7 +76,7 @@ function Main() {
     useEffect(() => {
         
         const interval = setInterval(() => {
-            if(divRef.current.scrollLeft>=1390){
+            if(divRef.current.scrollLeft>=1890){
 
                divRef.current.scrollLeft = 0
             }else{
@@ -118,26 +101,34 @@ function Main() {
                     <button className="slide-izq slides" onClick={atras} disabled={animacionEnCurso}>◀</button>
                     <div className="carrusel" ref={divRef}>
                         <div className='caja1-carrusel-m'>
-                            {ciudades1.map((i) => (
+                            {iterar.ciudades1.map((i) => (
                                 <div key={i.nombre}>
                                     <p>{i.nombre}</p>
-                                    <img src={i.image} alt={i.nombre} />
+                                    <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}><img src={i.foto} alt={i.nombre} /></a>
                                 </div>
                             ))}
                         </div>
                         <div className='caja2-carrusel-m'>
-                            {ciudades2.map((i) => (
+                            {iterar.ciudades2.map((i) => (
                                 <div key={i.nombre}>
                                     <p>{i.nombre}</p>
-                                    <img src={i.image} alt={i.nombre} />
+                                    <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}><img src={i.foto} alt={i.nombre} /></a>
                                 </div>
                             ))}
                         </div>
                         <div className='caja3-carrusel-m'>
-                            {ciudades3.map((i) => (
+                            {iterar.ciudades3.map((i) => (
                                 <div key={i.nombre}>
                                     <p>{i.nombre}</p>
-                                    <img src={i.image} alt={i.nombre} />
+                                    <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}><img src={i.foto} alt={i.nombre} /></a>
+                                </div>
+                            ))}
+                        </div>
+                        <div className='caja3-carrusel-m'>
+                            {iterar.ciudades4.map((i) => (
+                                <div key={i.nombre}>
+                                    <p>{i.nombre}</p>
+                                    <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}><img src={i.foto} alt={i.nombre} /></a>
                                 </div>
                             ))}
                         </div>
