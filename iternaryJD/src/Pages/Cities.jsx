@@ -1,45 +1,26 @@
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import { SignUp } from "../Components/SignUp"
-const ciudades = [{
-  nombre:"Chicago",
-  image:"https://images.pexels.com/photos/1823680/pexels-photo-1823680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-},{
-  nombre:"Tokyo",
-  image:"https://images.pexels.com/photos/2339009/pexels-photo-2339009.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-},{
-  nombre:"New York",
-  image:"https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-},{
-  nombre:"San Francisco",
-  image:"https://images.pexels.com/photos/196642/pexels-photo-196642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-},{
-  nombre:"Seattle",
-  image:"https://images.pexels.com/photos/2539395/pexels-photo-2539395.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-},{
-  nombre:"Paris",
-  image:"https://images.pexels.com/photos/1308940/pexels-photo-1308940.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-},{
-  nombre:"Estambul",
-  image:"https://images.pexels.com/photos/23227975/pexels-photo-23227975/free-photo-of-ciudad-punto-de-referencia-noche-oscuro.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-},{
-  nombre:"Barcelona",
-  image:"https://images.pexels.com/photos/1388030/pexels-photo-1388030.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-},{
-  nombre:"Queenstown",
-  image:"https://images.pexels.com/photos/18439533/pexels-photo-18439533/free-photo-of-vista-aerea-de-casas-y-montanas-cubiertas-de-nieve.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-},{
-  nombre:"Palermo",
-  image:"https://images.pexels.com/photos/13849371/pexels-photo-13849371.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-},{
-  nombre:"Rio de Janeiro",
-  image:"https://images.pexels.com/photos/28235675/pexels-photo-28235675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-},{
-  nombre:"Sidney",
-  image:"https://images.pexels.com/photos/995764/pexels-photo-995764.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-}]
+import { useAccordion } from "@material-tailwind/react"
+
+
+
 function Cities() {
-  
+
   let [buscar,setBuscar] = useState("")
+  let [ciudades,setCiudades] = useState([])
+
+  useEffect(()=>{
+    fetch("http://localhost:2020/api/cities/all")
+    .then((val) => val.json())
+      .then((data) => {
+      
+        
+        setCiudades(data.response||[])
+        console.log(data);
+        
+      });
+  },[])
+
   function colocarTexto(texto){
     setBuscar(texto)
     console.log(buscar);
@@ -72,7 +53,7 @@ function Cities() {
           <input type="text" id="buscar-ciudades" value={buscar}  onChange={e=>colocarTexto(e.target.value)}/>
         </div>
         <div className="ciudades justify-center">
-        <ColocarCartas ciudades={ciudades} texto={buscar}></ColocarCartas>
+        <ColocarCartas ciudades={ciudades} texto={buscar} ></ColocarCartas>
         </div>
       </main>
       
@@ -81,13 +62,18 @@ function Cities() {
 }
 function ColocarCartas({ciudades, texto}){
   let datos=ciudades.filter(c=>{
-    let filt1=c.nombre.toLowerCase().includes(texto.toLowerCase())
-    return filt1})
+    // let filt1=c.nombre.toLowerCase().includes(texto.toLowerCase())
+    let filt1=texto.toLowerCase()
+    let filt2=c.nombre.toLowerCase()
+    
+    return filt2.startsWith(filt1)
+    
+   })
   if(datos.length!=0){
   return(
     <>
     {
-      datos.map(e=><Cartas nombre={e.nombre} imagen={e.image}></Cartas>)
+      datos.map(e=><Cartas nombre={e.nombre} foto={e.foto} descripcion={e.descripcion}></Cartas>)
     }
     </>
   )}else{
@@ -98,12 +84,13 @@ function ColocarCartas({ciudades, texto}){
   }
   
 }
-function Cartas({nombre, imagen}){
+function Cartas({nombre, foto, descripcion}){
 return(
   <>
   <div className="cartas-ciudades relative">
                         <p>{nombre}</p>
-                    <img src={imagen} alt={nombre} />
+                        <a href={`/city?nombre=${nombre}&foto=${foto}&descp=${descripcion}`}><img src={foto} alt={nombre} /></a>
+                    
                     </div>
                     </>
 )

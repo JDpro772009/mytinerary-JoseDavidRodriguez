@@ -2,7 +2,7 @@ import { Home } from "./Pages/Home"
 import { NotFound } from "./Pages/NotFound"
 import { LayoutPrincipal } from "./Layouts/LayoutPrincipal"
 import { Cities } from "./Pages/Cities"
-
+import { City } from "./Pages/City"
 import {RouterProvider,createBrowserRouter} from "react-router-dom"
 import './App.css'
 
@@ -12,6 +12,8 @@ let router = createBrowserRouter([{
   path:"/",element: <Home></Home>
 },{
   path:"/home",element: <Home></Home>
+},{
+  path:"/city",element: <City></City>
 },{
   path:"/cities",element: <Cities></Cities>
 }]},{

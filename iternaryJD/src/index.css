@@ -500,7 +500,35 @@ align-items: center;
 .icono-registrarse{
   width: 10rem;
 } */
-
+.caja-carta-ciudad{
+  display: flex;
+  flex-flow: row wrap;
+  
+}
+.link-card-city{
+  padding: 5px;
+  font-size: 1.4rem;
+}
+.titulo-card-city{
+  font-size: 2rem;
+  padding: 5px;
+  width: 100%;
+}
+.imagen-card-city{
+  border-radius: 1rem;
+  width: 40vw;
+  height: 50vh;
+  object-fit: cover;
+  border-left: 4px solid cornflowerblue;
+}
+.descp-card-city{
+  padding: 1rem;
+  font-size: 1.2rem;
+  width: 16rem;
+  border-left: 3px solid white;
+  align-content: center;
+  margin: 10px;
+}
 @media only screen and (max-width: 600px) {
   .carrusel img{
     width: 7rem;
