@@ -88,8 +88,13 @@ function Cartas({nombre, foto, descripcion}){
 return(
   <>
   <div className="cartas-ciudades relative">
+                        
                         <p>{nombre}</p>
-                        <a href={`/city?nombre=${nombre}&foto=${foto}&descp=${descripcion}`}><img src={foto} alt={nombre} /></a>
+                        <a href={`/city?nombre=${nombre}&foto=${foto}&descp=${descripcion}`}
+                        className="link-click">
+                        <h4 className="click absolute">Click here</h4>
+                        <img src={foto} alt={nombre} className="hover-img"/>
+                        </a>
                     
                     </div>
                     </>

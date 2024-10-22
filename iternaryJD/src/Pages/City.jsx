@@ -18,7 +18,8 @@ function City() {
       <main className="flex justify-center flex-wrap">
         <div className="caja-carta-ciudad">
 
-          <a className="link-card-city" href="/cities">🡠</a>
+          <a className="link-card-city relative" href="/cities">🡠</a>
+          <img src="./src/Resources/avion-removebg-preview.png" alt="" class="avion-city"></img>
 
          <h4 className="titulo-card-city">{titulo}</h4>
          <img src={foto} alt={titulo} className="imagen-card-city" />

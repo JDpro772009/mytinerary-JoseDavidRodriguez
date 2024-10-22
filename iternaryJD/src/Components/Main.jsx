@@ -102,7 +102,8 @@ ciudades.map(c=>{
                     <div className="carrusel" ref={divRef}>
                         <div className='caja1-carrusel-m'>
                             {iterar.ciudades1.map((i) => (
-                                <div key={i.nombre}>
+                                <div key={i.nombre} className="link-click">
+                                     <h4 className="click absolute">Click here</h4>
                                     <p>{i.nombre}</p>
                                     <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}><img src={i.foto} alt={i.nombre} /></a>
                                 </div>
@@ -110,7 +111,8 @@ ciudades.map(c=>{
                         </div>
                         <div className='caja2-carrusel-m'>
                             {iterar.ciudades2.map((i) => (
-                                <div key={i.nombre}>
+                                <div key={i.nombre} className="link-click">
+                                     <h4 className="click absolute">Click here</h4>
                                     <p>{i.nombre}</p>
                                     <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}><img src={i.foto} alt={i.nombre} /></a>
                                 </div>
@@ -118,7 +120,8 @@ ciudades.map(c=>{
                         </div>
                         <div className='caja3-carrusel-m'>
                             {iterar.ciudades3.map((i) => (
-                                <div key={i.nombre}>
+                                <div key={i.nombre} className="link-click">
+                                     <h4 className="click absolute">Click here</h4>
                                     <p>{i.nombre}</p>
                                     <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}><img src={i.foto} alt={i.nombre} /></a>
                                 </div>
@@ -126,7 +129,8 @@ ciudades.map(c=>{
                         </div>
                         <div className='caja3-carrusel-m'>
                             {iterar.ciudades4.map((i) => (
-                                <div key={i.nombre}>
+                                <div key={i.nombre} className="link-click">
+                                     <h4 className="click absolute">Click here</h4>
                                     <p>{i.nombre}</p>
                                     <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}><img src={i.foto} alt={i.nombre} /></a>
                                 </div>
