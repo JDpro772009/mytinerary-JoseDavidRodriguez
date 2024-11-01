@@ -1,31 +1,40 @@
+
 import React, { useRef, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCities } from '../redux/citySlice.js';
+import { Cities } from '../Pages/Cities.jsx';
+
 
 function Main() {
     
-  let [ciudades,setCiudades] = useState([])
+  const dispatch = useDispatch()
+
+// //   let [ciudades,setCiudades] = useState([])
+const ciudades = useSelector((state=>state.cities.cities.response))
+
+
+
   useEffect(()=>{
     fetch("http://localhost:2020/api/cities/all")
     .then((val) => val.json())
       .then((data) => {
-      
-        
-        setCiudades(data.response||[])
-        console.log(data);
+        dispatch(addCities({cities:data}))
+     
         
       });
+
   },[])
+  
   let iterar = {
  ciudades1 : [],
  ciudades2 : [],
  ciudades3 : [],
  ciudades4 : []}
 
-console.log(iterar.lenght);
 
  let numero = 1
- console.log(ciudades);
  
-ciudades.map(c=>{
+ciudades?.map(c=>{
    if(iterar.ciudades1.length < 4){
     iterar.ciudades1.push(c)
     
@@ -36,7 +45,6 @@ ciudades.map(c=>{
    }else{
     iterar.ciudades4.push(c)
    }
-   console.log(iterar);
 })
    
    
@@ -103,16 +111,19 @@ ciudades.map(c=>{
                         <div className='caja1-carrusel-m'>
                             {iterar.ciudades1.map((i) => (
                                 <div key={i.nombre} className="link-click">
+                                    <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}>
                                      <h4 className="click absolute">Click here</h4>
+                                     </a>
                                     <p>{i.nombre}</p>
-                                    <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}><img src={i.foto} alt={i.nombre} /></a>
+                                    <img src={i.foto} alt={i.nombre} />
                                 </div>
                             ))}
                         </div>
                         <div className='caja2-carrusel-m'>
                             {iterar.ciudades2.map((i) => (
-                                <div key={i.nombre} className="link-click">
-                                     <h4 className="click absolute">Click here</h4>
+                                <div key={i.nombre} className="link-click"><a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}>
+                                <h4 className="click absolute">Click here</h4>
+                                </a>
                                     <p>{i.nombre}</p>
                                     <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}><img src={i.foto} alt={i.nombre} /></a>
                                 </div>
@@ -120,8 +131,9 @@ ciudades.map(c=>{
                         </div>
                         <div className='caja3-carrusel-m'>
                             {iterar.ciudades3.map((i) => (
-                                <div key={i.nombre} className="link-click">
-                                     <h4 className="click absolute">Click here</h4>
+                                <div key={i.nombre} className="link-click"><a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}>
+                                <h4 className="click absolute">Click here</h4>
+                                </a>
                                     <p>{i.nombre}</p>
                                     <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}><img src={i.foto} alt={i.nombre} /></a>
                                 </div>
@@ -129,8 +141,9 @@ ciudades.map(c=>{
                         </div>
                         <div className='caja3-carrusel-m'>
                             {iterar.ciudades4.map((i) => (
-                                <div key={i.nombre} className="link-click">
-                                     <h4 className="click absolute">Click here</h4>
+                                <div key={i.nombre} className="link-click"><a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}>
+                                <h4 className="click absolute">Click here</h4>
+                                </a>
                                     <p>{i.nombre}</p>
                                     <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}><img src={i.foto} alt={i.nombre} /></a>
                                 </div>
