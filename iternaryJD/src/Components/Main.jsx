@@ -111,7 +111,7 @@ ciudades?.map(c=>{
                         <div className='caja1-carrusel-m'>
                             {iterar.ciudades1.map((i) => (
                                 <div key={i.nombre} className="link-click">
-                                    <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}>
+                                    <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}&id=${i._id}`}>
                                      <h4 className="click absolute">Click here</h4>
                                      </a>
                                     <p>{i.nombre}</p>
@@ -121,7 +121,7 @@ ciudades?.map(c=>{
                         </div>
                         <div className='caja2-carrusel-m'>
                             {iterar.ciudades2.map((i) => (
-                                <div key={i.nombre} className="link-click"><a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}>
+                                <div key={i.nombre} className="link-click"><a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}`}>
                                 <h4 className="click absolute">Click here</h4>
                                 </a>
                                     <p>{i.nombre}</p>
@@ -131,7 +131,7 @@ ciudades?.map(c=>{
                         </div>
                         <div className='caja3-carrusel-m'>
                             {iterar.ciudades3.map((i) => (
-                                <div key={i.nombre} className="link-click"><a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}>
+                                <div key={i.nombre} className="link-click"><a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}`}>
                                 <h4 className="click absolute">Click here</h4>
                                 </a>
                                     <p>{i.nombre}</p>
@@ -141,7 +141,7 @@ ciudades?.map(c=>{
                         </div>
                         <div className='caja3-carrusel-m'>
                             {iterar.ciudades4.map((i) => (
-                                <div key={i.nombre} className="link-click"><a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}`}>
+                                <div key={i.nombre} className="link-click"><a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}`}>
                                 <h4 className="click absolute">Click here</h4>
                                 </a>
                                     <p>{i.nombre}</p>

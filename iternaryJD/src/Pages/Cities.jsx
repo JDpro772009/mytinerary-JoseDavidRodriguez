@@ -1,31 +1,33 @@
 import { useState,useEffect } from "react"
 import { SignUp } from "../Components/SignUp"
+import { useDispatch, useSelector } from 'react-redux';
+import { addCities, buscador } from '../redux/citySlice.js';
 import { useAccordion } from "@material-tailwind/react"
 
 
 
 function Cities() {
 
-  let [buscar,setBuscar] = useState("")
-  let [ciudades,setCiudades] = useState([])
+  // let [buscar,setBuscar] = useState("")
+  // let [ciudades,setCiudades] = useState([])
+  
+const buscar = useSelector((state=>state.cities.buscar))
+const ciudades = useSelector((state=>state.cities.cities.response))
+console.log(ciudades);
 
-  useEffect(()=>{
-    fetch("http://localhost:2020/api/cities/all")
-    .then((val) => val.json())
-      .then((data) => {
+const dispatch = useDispatch()
+useEffect(()=>{
+  fetch("http://localhost:2020/api/cities/all")
+  .then((val) => val.json())
+    .then((data) => {
+      dispatch(addCities({cities:data}))
+   
       
-        
-        setCiudades(data.response||[])
-        console.log(data);
-        
-      });
-  },[])
+    });
 
-  function colocarTexto(texto){
-    setBuscar(texto)
-    console.log(buscar);
-    
-  }
+},[])
+console.log(buscar);
+
   
   return (
     <>
@@ -50,7 +52,7 @@ function Cities() {
       <main className="flex justify-center flex-wrap">
         <div>
           <label for="buscar-ciudades" className="mr-2 font-bold text-xl">Cities:</label>
-          <input type="text" id="buscar-ciudades" value={buscar}  onChange={e=>colocarTexto(e.target.value)}/>
+          <input type="text" id="buscar-ciudades" value={buscar}  onChange={e=>dispatch(buscador({buscar:e.target.value}))}/>
         </div>
         <div className="ciudades justify-center">
         <ColocarCartas ciudades={ciudades} texto={buscar} ></ColocarCartas>
@@ -61,7 +63,7 @@ function Cities() {
   )
 }
 function ColocarCartas({ciudades, texto}){
-  let datos=ciudades.filter(c=>{
+  let datos=ciudades?.filter(c=>{
     // let filt1=c.nombre.toLowerCase().includes(texto.toLowerCase())
     let filt1=texto.toLowerCase()
     let filt2=c.nombre.toLowerCase()
@@ -69,12 +71,17 @@ function ColocarCartas({ciudades, texto}){
     return filt2.startsWith(filt1)
     
    })
-  if(datos.length!=0){
+  if(datos?.length!=0){
+    console.log(datos);
+    
   return(
     <>
     {
-      datos.map(e=><Cartas nombre={e.nombre} foto={e.foto} descripcion={e.descripcion}></Cartas>)
-    }
+      
+      
+      datos?.map(e=><Cartas nombre={e.nombre} foto={e.foto} descripcion={e.descripcion} pais={e.pais} divisa={e.divisa} _id={e._id}></Cartas>)
+     
+     }
     </>
   )}else{
     return(<>
@@ -84,13 +91,15 @@ function ColocarCartas({ciudades, texto}){
   }
   
 }
-function Cartas({nombre, foto, descripcion}){
+function Cartas({nombre, foto, descripcion, pais, divisa, _id}){
+  console.log(divisa);
+  
 return(
   <>
   <div className="cartas-ciudades relative">
                         
                         <p>{nombre}</p>
-                        <a href={`/city?nombre=${nombre}&foto=${foto}&descp=${descripcion}`}
+                        <a href={`/city?nombre=${nombre}&foto=${foto}&descp=${descripcion}&pais=${pais}&divisa=${divisa}&id=${_id}`}
                         className="link-click">
                         <h4 className="click absolute">Click here</h4>
                         <img src={foto} alt={nombre} className="hover-img"/>

@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState={
-    cities:[]
+    cities:[],
+    buscar:"",
+    ciudad:[]
 }
 
 export const cityReducer = createSlice(
@@ -12,10 +14,15 @@ export const cityReducer = createSlice(
             addCities: (state,action)=>{
                 const {cities} = action.payload
                 state.cities = cities
-            }
+            },
+            buscador:(state,action)=>{
+                const {buscar} = action.payload
+                state.buscar = buscar
+            },
+            
         }
     }
 )
 
-export const {addCities} = cityReducer.actions
+export const {addCities,buscador} = cityReducer.actions
 export default cityReducer.reducer
