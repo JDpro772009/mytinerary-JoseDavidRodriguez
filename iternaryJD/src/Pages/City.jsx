@@ -95,7 +95,7 @@ function City() {
   </g>
 </svg>
 
-           <p>Moneda: {divisas}</p>
+           <p>currency: {divisas}</p>
         </a>
         <a  className="esp-link">
         <svg
@@ -111,7 +111,7 @@ function City() {
   <rect x="16" y="10" width="90" height="50" fill="#d42828" />
  
 </svg>
-           <p>Pais: {paiss}</p>
+           <p>country: {paiss}</p>
         </a>
        
           </div>
