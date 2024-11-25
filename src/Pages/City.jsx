@@ -1,9 +1,8 @@
 import { useState,useEffect } from "react"
-import { SignUp } from "../Components/SignUp"
-import { useAccordion } from "@material-tailwind/react"
+
 import { useDispatch, useSelector } from 'react-redux';
 import { addCities } from '../redux/citySlice.js';
-import { set } from "mongoose";
+
 
 
 function City() {

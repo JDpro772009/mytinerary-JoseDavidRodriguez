@@ -1,11 +1,28 @@
 
 import { Main } from '../Components/Main'
 import { Button } from "@material-tailwind/react";
-
 import { SignUp } from "../Components/SignUp"
 
 
+
+
+
+
 function Home() {
+  let params = new URLSearchParams(window.location.search)
+  let token = params.get("token")
+  let email = params.get("email")
+  let nombrePerfil = params.get("nombrePerfil")
+  let fotoPerfil = params.get("fotoPerfil")
+
+  
+ 
+ 
+  
+  if(token){
+    localStorage.setItem("token",token)
+  }
+  
 
   return (
     <>
@@ -19,7 +36,7 @@ function Home() {
             <div className="sub-caja-header1">
             <h1 className="text-5xl font-bold titu">My Tinerary</h1>
             <p>Find your <span className='text-cyan-600'>perfect</span> trip, designed by insiders who know and love their <span className='text-cyan-600'>cities!</span><br />Explore your next city on the<span className='text-cyan-600'> button</span></p>
-                  <a href="/cities" className="w-36">
+            <a href={token||email||fotoPerfil||nombrePerfil?`/cities?email=${email}&fotoPerfil=${fotoPerfil}&nombrePerfil=${nombrePerfil}&token=${token}`:"/cities"} className="w-36">
         <Button variant="gradient" className="boton-redirect">Cities</Button>
       </a>
                   </div>

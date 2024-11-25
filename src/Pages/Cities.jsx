@@ -1,12 +1,14 @@
-import { useState,useEffect } from "react"
+import {useEffect } from "react"
 import { SignUp } from "../Components/SignUp"
 import { useDispatch, useSelector } from 'react-redux';
 import { addCities, buscador } from '../redux/citySlice.js';
-import { useAccordion } from "@material-tailwind/react"
+
 
 
 
 function Cities() {
+
+
 
   // let [buscar,setBuscar] = useState("")
   // let [ciudades,setCiudades] = useState([])
@@ -93,13 +95,17 @@ function ColocarCartas({ciudades, texto}){
 }
 function Cartas({nombre, foto, descripcion, pais, divisa, _id}){
   console.log(divisa);
-  
+  let params = new URLSearchParams(window.location.search)
+let token = params.get("token")
+let email = params.get("email")
+let nombrePerfil = params.get("nombrePerfil")
+let fotoPerfil = params.get("fotoPerfil")
 return(
   <>
   <div className="cartas-ciudades relative">
                         
                         <p>{nombre}</p>
-                        <a href={`/city?nombre=${nombre}&foto=${foto}&descp=${descripcion}&pais=${pais}&divisa=${divisa}&id=${_id}`}
+                        <a href={token||email||fotoPerfil||nombrePerfil?`/city?email=${email}&fotoPerfil=${fotoPerfil}&nombrePerfil=${nombrePerfil}&token=${token}&nombre=${nombre}&foto=${foto}&descp=${descripcion}&pais=${pais}&divisa=${divisa}&id=${_id}`:`/city?nombre=${nombre}&foto=${foto}&descp=${descripcion}&pais=${pais}&divisa=${divisa}&id=${_id}`}
                         className="link-click">
                         <h4 className="click absolute">Click here</h4>
                         <img src={foto} alt={nombre} className="hover-img"/>

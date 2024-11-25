@@ -1,13 +1,17 @@
 import { Outlet } from "react-router-dom"
 function LayoutPrincipal() {
-
+  let params = new URLSearchParams(window.location.search)
+  let token = params.get("token")
+  let email = params.get("email")
+  let nombre = params.get("nombrePerfil")
+  let foto = params.get("fotoPerfil")
 
   return (
     <>
       <nav className="navbar">
     <ul className="navbar-nav">
       <li className="logo">
-        <a href="/home" className="nav-link">
+        <a href={token||email||foto||nombre?`/home?email=${email}&fotoPerfil=${foto}&nombrePerfil=${nombre}&token=${token}`:"/home"} className="nav-link">
           <span className="link-text logo-text">My iternary</span>
           <svg
             aria-hidden="true"
@@ -35,7 +39,7 @@ function LayoutPrincipal() {
         </a>
       </li>
       <li className="nav-item">
-        <a href="/home" className="nav-link">
+        <a href={token||email||foto||nombre?`/home?email=${email}&fotoPerfil=${foto}&nombrePerfil=${nombre}&token=${token}`:"/home"} className="nav-link">
         <svg
   aria-hidden="true"
   focusable="false"
@@ -62,7 +66,7 @@ function LayoutPrincipal() {
         </a>
       </li>
       <li className="nav-item">
-        <a href="/cities" className="nav-link">
+        <a href={token||email||foto||nombre?`/cities?email=${email}&fotoPerfil=${foto}&nombrePerfil=${nombre}&token=${token}`:"/cities"} className="nav-link">
         <svg
   aria-hidden="true"
   focusable="false"

@@ -2,14 +2,19 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCities } from '../redux/citySlice.js';
-import { Cities } from '../Pages/Cities.jsx';
+
 
 
 function Main() {
-    
-  const dispatch = useDispatch()
 
-// //   let [ciudades,setCiudades] = useState([])
+let params = new URLSearchParams(window.location.search)
+let token = params.get("token")
+let email = params.get("email")
+let nombrePerfil = params.get("nombrePerfil")
+let fotoPerfil = params.get("fotoPerfil")
+
+const dispatch = useDispatch()
+
 const ciudades = useSelector((state=>state.cities.cities.response))
 
 
@@ -32,7 +37,6 @@ const ciudades = useSelector((state=>state.cities.cities.response))
  ciudades4 : []}
 
 
- let numero = 1
  
 ciudades?.map(c=>{
    if(iterar.ciudades1.length < 4){
@@ -89,7 +93,7 @@ ciudades?.map(c=>{
                divRef.current.scrollLeft = 0
             }else{
                 adelante(); 
-                console.log(divRef.current.scrollLeft);
+        
                 
             }
             
@@ -111,7 +115,8 @@ ciudades?.map(c=>{
                         <div className='caja1-carrusel-m'>
                             {iterar.ciudades1.map((i) => (
                                 <div key={i.nombre} className="link-click">
-                                    <a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}&id=${i._id}`}>
+                                    {/* href={token||email||fotoPerfil||nombrePerfil?`/city?email=${email}&fotoPerfil=${foto}&nombrePerfil=${nombre}&token=${token}&nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}&id=${i._id}`:"/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}&id=${i._id}"} */}
+                                    <a href={token||email||fotoPerfil||nombrePerfil?`/city?email=${email}&fotoPerfil=${fotoPerfil}&nombrePerfil=${nombrePerfil}&token=${token}&nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}&id=${i._id}`:`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}&id=${i._id}`}>
                                      <h4 className="click absolute">Click here</h4>
                                      </a>
                                     <p>{i.nombre}</p>
@@ -121,7 +126,7 @@ ciudades?.map(c=>{
                         </div>
                         <div className='caja2-carrusel-m'>
                             {iterar.ciudades2.map((i) => (
-                                <div key={i.nombre} className="link-click"><a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}`}>
+                                <div key={i.nombre} className="link-click"><a href={token||email||fotoPerfil||nombrePerfil?`/city?email=${email}&fotoPerfil=${fotoPerfil}&nombrePerfil=${nombrePerfil}&token=${token}&nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}&id=${i._id}`:`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}&id=${i._id}`}>
                                 <h4 className="click absolute">Click here</h4>
                                 </a>
                                     <p>{i.nombre}</p>
@@ -131,7 +136,7 @@ ciudades?.map(c=>{
                         </div>
                         <div className='caja3-carrusel-m'>
                             {iterar.ciudades3.map((i) => (
-                                <div key={i.nombre} className="link-click"><a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}`}>
+                                <div key={i.nombre} className="link-click"><a href={token||email||fotoPerfil||nombrePerfil?`/city?email=${email}&fotoPerfil=${fotoPerfil}&nombrePerfil=${nombrePerfil}&token=${token}&nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}&id=${i._id}`:`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}&id=${i._id}`}>
                                 <h4 className="click absolute">Click here</h4>
                                 </a>
                                     <p>{i.nombre}</p>
@@ -141,7 +146,7 @@ ciudades?.map(c=>{
                         </div>
                         <div className='caja3-carrusel-m'>
                             {iterar.ciudades4.map((i) => (
-                                <div key={i.nombre} className="link-click"><a href={`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}`}>
+                                <div key={i.nombre} className="link-click"><a href={token||email||fotoPerfil||nombrePerfil?`/city?email=${email}&fotoPerfil=${fotoPerfil}&nombrePerfil=${nombrePerfil}&token=${token}&nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}&id=${i._id}`:`/city?nombre=${i.nombre}&foto=${i.foto}&descp=${i.descripcion}&pais=${i.pais}&divisa=${i.divisa}&id=${i._id}`}>
                                 <h4 className="click absolute">Click here</h4>
                                 </a>
                                     <p>{i.nombre}</p>

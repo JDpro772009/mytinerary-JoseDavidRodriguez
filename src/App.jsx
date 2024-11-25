@@ -3,6 +3,10 @@ import { NotFound } from "./Pages/NotFound"
 import { LayoutPrincipal } from "./Layouts/LayoutPrincipal"
 import { Cities } from "./Pages/Cities"
 import { City } from "./Pages/City"
+import { SignIn } from "./Pages/SignIn"
+import { SignUp } from "./Pages/SignUp"
+import PrivateRoute from "./Components/PrivateRoutes"
+
 import {RouterProvider,createBrowserRouter} from "react-router-dom"
 import './App.css'
 
@@ -14,6 +18,10 @@ let router = createBrowserRouter([{
   path:"/home",element: <Home></Home>
 },{
   path:"/city",element: <City></City>
+},{
+  path:"/signIn",element: <PrivateRoute><SignIn></SignIn></PrivateRoute>
+},{
+  path:"/signUp",element: <SignUp></SignUp>
 },{
   path:"/cities",element: <Cities></Cities>
 }]},{
