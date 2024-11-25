@@ -887,20 +887,26 @@ input:focus, select:focus{
 .signOut{
   padding: 10px;
   line-height: 0;
-  border-radius: 1rem;
+  border-radius: 7px;
   background-color: #6a1a1a;
   border-left: white 2px solid;
   margin-left: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
   border-right: white 2px solid;
+  transition: all .3s;
+}
+.signOut:hover{
+  background-color:#7a1b1b;
+  transform: translateY(-3px);
 }
 .fotoPerfil{
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 3rem;
   object-fit: cover;
-  outline: 2px solid white;
+  margin-top: .8rem;
+  outline: 2px solid white
 }
 .perf{
 
