@@ -39,7 +39,7 @@ function Perfil() {
          setPerfil(data.response)
         
         }else{
-          const response = await fetch(`http://localhost:2020/api/usuarios/${email}`);
+          const response = await fetch(`https://mytinerary-back-josedavidrodriguez.onrender.com/api/usuarios/${email}`);
           const data = await response.json();
   
           setPerfil(data.response); 

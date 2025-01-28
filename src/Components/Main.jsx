@@ -20,7 +20,7 @@ const ciudades = useSelector((state=>state.cities.cities.response))
 
 
   useEffect(()=>{
-    fetch("http://localhost:2020/api/cities/all")
+    fetch("https://mytinerary-back-josedavidrodriguez.onrender.com/api/cities/all")
     .then((val) => val.json())
       .then((data) => {
         dispatch(addCities({cities:data}))
