@@ -40,7 +40,7 @@ function SignIn() {
   
   };
   const google = ()=>{
-    window.location.href="http://localhost:2020/api/auth/signIn/google"
+    window.location.href="https://mytinerary-back-josedavidrodriguez.onrender.com/api/auth/signIn/google"
   }
 
   return (<>
