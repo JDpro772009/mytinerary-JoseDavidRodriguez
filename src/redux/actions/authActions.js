@@ -18,7 +18,7 @@ const login = createAsyncThunk("login", async({email,password}) => {
         contraseña:password
     }
    
-        const response = await axios.post("http://localhost:2020/api/auth/signIn",credentials)
+        const response = await axios.post("https://mytinerary-back-josedavidrodriguez.onrender.com",credentials)
 
         console.log("Se proceso la solicitud");
 

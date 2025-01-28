@@ -23,7 +23,7 @@ const signUp = createAsyncThunk("SignUp", async({email,contraseña,nombre,apelli
 
     }
     
-        const response = await axios.post("http://localhost:2020/api/usuarios/crear",credentials)
+        const response = await axios.post("https://mytinerary-back-josedavidrodriguez.onrender.com/api/usuarios/crear",credentials)
 
         console.log("Se proceso la solicitud");
     console.log("Response",response.data);

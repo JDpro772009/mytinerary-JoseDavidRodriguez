@@ -28,10 +28,7 @@ let router = createBrowserRouter([{
   path:"/*",element: <NotFound></NotFound>
 }])
 function App() {
-  let params = new URLSearchParams(window.location.search)
-  let token = params.get("token")
-  
-  
+ 
  
 
   return (
