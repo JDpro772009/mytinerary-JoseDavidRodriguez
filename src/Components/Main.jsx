@@ -107,7 +107,7 @@ ciudades?.map(c=>{
             <main>
                 <div className="titulo-carrusel">
                     <img src="./src/Resources/star-removebg-preview.png" alt="" />
-                    <h3 className="text-2xl font-bold mt-7">Popular Mytineraries</h3>
+                    <h3 className="text-2xl font-bold mt-7">Popular Mytineraries </h3>
                 </div>
                 <div className="carrusel-info flex">
                     <button className="slide-izq slides" onClick={atras} disabled={animacionEnCurso}>◀</button>
